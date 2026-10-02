@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>A Little Birthday Surprise 💖</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ✏️ BACKGROUND MUSIC: put your song in the "music" folder -->
+<audio id="bgMusic" loop>
+    <source src="music/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<div id="particles"></div>
+
+<button id="musicButton" class="music-btn">🔊</button>
+
+
+<!-- =================================================
+     PAGE 1 : PASSWORD   (✏️ PIN is set in script.js)
+================================================= -->
+<section id="passwordPage" class="page active">
+
+    <div class="password-card">
+
+        <!-- ✏️ Her photo: images/person.jpg -->
+        <img class="password-photo" src="images/person.jpg" alt="Birthday person">
+
+        <p class="password-eyebrow">A little surprise awaits you</p>
+
+        <h1>Secret <span>Birthday</span> Door</h1>
+
+        <p class="password-instruction">Enter the secret code to continue</p>
+
+        <!-- dots are created automatically from the PIN length -->
+        <div id="pinDisplay" class="pin-display"></div>
+
+        <div class="keypad">
+            <button class="key" data-number="1">1</button>
+            <button class="key" data-number="2">2</button>
+            <button class="key" data-number="3">3</button>
+            <button class="key" data-number="4">4</button>
+            <button class="key" data-number="5">5</button>
+            <button class="key" data-number="6">6</button>
+            <button class="key" data-number="7">7</button>
+            <button class="key" data-number="8">8</button>
+            <button class="key" data-number="9">9</button>
+            <button class="key" id="clearPin">⌫</button>
+            <button class="key" data-number="0">0</button>
+            <button class="key key-enter" id="enterPin">✓</button>
+        </div>
+
+        <p id="pinMessage" class="pin-message"></p>
+
+        <!-- ✏️ Hint text -->
+        <p class="password-hint">Hint: it's a special number 😉</p>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 2 : ENVELOPE
+================================================= -->
+<section id="envelopePage" class="page">
+
+    <div class="container">
+
+        <p class="reveal-small">You made it <span class="heart" style="font-size:1rem">♥</span></p>
+
+        <h1>A little something <span class="red">for you...</span></h1>
+
+        <p>There is a story waiting inside.</p>
+
+        <div id="envelope" class="envelope"></div>
+
+        <button id="openEnvelope" class="main-btn">Open the envelope 💌</button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 3 : MEMORIES   (✏️ photos: images/photo1.jpg … photo5.jpg)
+     All photos sit in one line. Add or remove a
+     <div class="polaroid"> block to change the amount.
+================================================= -->
+<section id="memoriesPage" class="page">
+
+    <div class="container">
+
+        <p class="reveal-small">A few little memories</p>
+
+        <h1>Moments worth <span class="red">keeping</span> 📸</h1>
+
+        <p>Some moments become memories. Some memories become treasures.</p>
+
+        <div class="memories-grid">
+
+            <div class="polaroid">
+                <img src="images/photo1.jpg" alt="Memory 1">
+                <p>The day something started ✨</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="images/photo2.jpg" alt="Memory 2">
+                <p>Which melts my heart 💕</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="images/photo3.jpg" alt="Memory 3">
+                <p>A day to remember 🌸</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="images/photo4.jpg" alt="Memory 4">
+                <p>Smiles &amp; memories 😊</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="images/photo5.jpg" alt="Memory 5">
+                <p>And many more to come ❤️</p>
+            </div>
+
+        </div>
+
+        <p class="swipe-hint">swipe sideways to see all photos →</p>
+
+        <button id="memoryButton" class="main-btn">There's something else... 💖</button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 4 : LETTER   (✏️ write your own message here)
+================================================= -->
+<section id="letterPage" class="page">
+
+    <div class="container">
+
+        <p class="reveal-small">A letter for you</p>
+
+        <div class="letter">
+
+            <h2>Dear SHUBBI,</h2>
+
+            <p>3/10/2026.</p>
+
+            <p>Evattu nin bday agirboudu like your spl day ,but nange neen Nan life ge bandaginda Elli vargu everyday is a spl day for mee....</p>
+            <p>Nin bday dina nandu ond wish edhe-inmunde baro yalla bday lu nin jothe eddu,nin mukadalli nagu nodtha "happiee birthday shubbi♥️" antha helo avakasha nang kodu ...mm life long chanag nodkothini</p>
+
+            <p>Don't worry too much about what's ahead. Just enjoy the little moments, laugh a little louder, and keep being the wonderful person you are.</p>
+
+            <p>HAPPIEE BIRTHDAY SHUBBI♥️🧿</p>
+
+            <p style="text-align:right">With lots of love,<br><span class="red">Someone who cares </span></p>
+
+        </div>
+
+        <button id="giftButton" class="main-btn">One more surprise 🎁</button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 5 : GIFT   (✏️ special photo: images/photo1.jpg)
+================================================= -->
+<section id="giftPage" class="page">
+
+    <div class="container">
+
+        <div id="giftIntro">
+
+            <p class="reveal-small">Wait...</p>
+
+            <h1>There's a little <span class="red">gift</span> here 🎁</h1>
+
+            <p>Tap it. Something might happen...</p>
+
+            <div class="gift-container">
+                <div id="giftBox" class="gift-box">
+                    <div class="gift-lid"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="giftReveal" class="hidden gift-reveal">
+
+            <div class="magic-orb"></div>
+
+            <p class="reveal-small">A memory just for you</p>
+
+            <h2>Some moments never <span class="magic-glow">fade</span></h2>
+
+            <div class="memory-card">
+                <img class="memory-card-image" src="images/photo6.jpg" alt="Special memory">
+                <div class="memory-card-content">
+                    <h3>A special day</h3>
+                    <p>Happy Birthday to the most beautiful part of my life. ❤️ You are not just my girlfriend, you are my happiness, my comfort, and the person who makes my ordinary days feel special. I'm so lucky to have you. May your smile never fade and may all your dreams come true. I'll always be here to love you, support you, and make you smile. Happy Birthday, my love. ❤️🎂✨</p>
+                </div>
+            </div>
+
+            <button id="cakeButton" class="main-btn">Now let's celebrate! 🎂</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 6 : CAKE
+================================================= -->
+<section id="cakePage" class="page">
+
+    <div class="container">
+
+        <p class="reveal-small">The big moment</p>
+
+        <h1>Make a <span class="red">wish</span>... 🌟</h1>
+
+        <p id="wishInstruction">Take a deep breath and blow out the candle.</p>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div id="candle" class="candle">
+                    <div id="flame" class="flame"></div>
+                </div>
+            </div>
+        </div>
+
+        <button id="blowButton" class="main-btn">💨 Tap to blow</button>
+
+        <p class="mic-info">Or allow microphone access and blow into your microphone 🎤</p>
+
+        <div id="wishMessage" class="hidden gift-reveal">
+            <h2 class="red">✨ WISH MADE ✨</h2>
+            <p>May this wish find its way to you. 💫</p>
+            <br>
+            <button id="finalButton" class="main-btn">Open your final surprise 🎉</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAGE 7 : FINAL
+================================================= -->
+<section id="finalPage" class="page">
+
+    <canvas id="fireworks"></canvas>
+
+    <div class="final-content container">
+
+        <div class="heart" style="font-size:3.5rem">♥</div>
+
+        <p class="reveal-small">Happy Birthday</p>
+
+        <h1>Your next chapter<br><span>starts now.</span> ✨</h1>
+
+        <p class="final-message">May it be filled with adventures, laughter, love, success and memories you will never forget.</p>
+
+        <p class="red" style="letter-spacing:4px;margin-bottom:30px">🎂 HAPPY BIRTHDAY 🎂</p>
+
+        <button id="replayButton" class="main-btn">↻ Experience it again</button>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
