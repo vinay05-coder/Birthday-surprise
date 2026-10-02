@@ -1,0 +1,836 @@
+/* =========================================================
+   BIRTHDAY WEBSITE – STYLE.CSS
+   Red / cream / pink theme
+   ✏️ Change colours in the ":root" block below – everything
+      else updates automatically.
+========================================================= */
+
+:root {
+    --bg:        #9a0b16;   /* page background (template red)   */
+    --maroon:    #7a0c1c;   /* dark red text on light cards     */
+    --cream:     #f6ecd8;   /* keys, envelope, gift box         */
+    --paper:     #fffaf0;   /* cards / polaroids / letter       */
+    --line:      #e3d2b0;   /* card borders                     */
+    --pink:      #ec6a9f;   /* buttons, accents                 */
+    --pink-soft: #ff9cc2;   /* highlight text on red            */
+    --pink-deep: #d94d86;   /* highlight text on light cards    */
+    --gold:      #f0cf7a;   /* small labels                     */
+    --ink:       #5a1822;   /* paragraph text on light cards    */
+    --text-soft: #f9e6e8;   /* paragraph text on red            */
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+
+.page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.10), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.16), transparent 40%),
+        var(--bg);
+}
+
+.page.active {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+p {
+    color: var(--text-soft);
+    line-height: 1.7;
+}
+
+.red {
+    color: var(--pink-soft);
+}
+
+.reveal-small {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+.main-btn {
+    border: none;
+    outline: none;
+    background: var(--pink);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
+    transition: 0.3s ease;
+}
+
+.main-btn:hover {
+    background: #ff8fba;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 143, 186, 0.45);
+}
+
+.main-btn:active {
+    transform: scale(0.96);
+}
+
+/* =========================================
+   PASSWORD PAGE  (clean layout)
+========================================= */
+
+.password-card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--paper);
+    padding: 32px 26px 26px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    text-align: center;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.4),
+        0 0 35px rgba(255, 156, 194, 0.15);
+}
+
+.password-photo {
+    display: block;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--maroon);
+    margin: 0 auto 18px;
+    box-shadow: 0 0 25px rgba(236, 106, 159, 0.45);
+}
+
+.password-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a0606a;
+    margin-bottom: 6px;
+}
+
+.password-card h1 {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    color: var(--maroon);
+}
+
+.password-card h1 span {
+    color: var(--pink-deep);
+}
+
+.password-instruction {
+    font-size: 0.9rem;
+    color: #7b4a52;
+}
+
+/* PIN dots (created by script.js) */
+
+.pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin: 22px 0;
+}
+
+.pin-display span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--maroon);
+    transition: 0.2s ease;
+}
+
+.pin-display span.filled {
+    background: var(--maroon);
+    transform: scale(1.1);
+}
+
+/* KEYPAD */
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+.key {
+    height: 54px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--cream);
+    color: var(--maroon);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.key:hover {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 12, 28, 0.3);
+}
+
+.key:active {
+    transform: scale(0.94);
+}
+
+.key-enter {
+    background: var(--pink);
+    border-color: var(--pink);
+    color: #ffffff;
+}
+
+.pin-message {
+    min-height: 22px;
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: var(--maroon);
+}
+
+.password-hint {
+    margin-top: 4px;
+    font-size: 0.72rem;
+    color: #a08a8e;
+}
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+    width: min(280px, 80vw);
+    aspect-ratio: 14 / 9;
+    background: var(--cream);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    position: relative;
+    margin: 40px auto;
+    cursor: pointer;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    transition: 0.4s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 56%;
+    background: #e8d6b4;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: 0.7s ease;
+    z-index: 3;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.heart {
+    color: var(--pink-soft);
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 156, 194, 0.6));
+}
+
+/* =========================================
+   MEMORIES  – all photos in ONE line
+   (on small screens the row scrolls sideways)
+========================================= */
+
+.memories-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: clamp(8px, 1.6vw, 20px);
+    margin: 30px auto;
+    max-width: 1000px;
+    padding: 18px 12px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.memories-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.memories-grid .polaroid:first-child {
+    margin-left: auto;
+}
+
+.memories-grid .polaroid:last-child {
+    margin-right: auto;
+}
+
+.polaroid {
+    flex: 0 0 clamp(124px, 17vw, 170px);
+    scroll-snap-align: center;
+    background: var(--paper);
+    padding: 10px 10px 16px;
+    border-radius: 5px;
+    border: 1px solid var(--line);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: 0.4s ease;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0) scale(1.04);
+    border-color: var(--pink);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.polaroid p {
+    margin-top: 10px;
+    font-size: clamp(0.72rem, 1.4vw, 0.88rem);
+    line-height: 1.4;
+    color: var(--maroon);
+}
+
+.swipe-hint {
+    display: none;
+    font-size: 0.78rem;
+    opacity: 0.85;
+    margin-bottom: 18px;
+}
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 45px;
+    background: linear-gradient(135deg, #fffaf0, #f6ecd8);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.letter h2 {
+    color: var(--maroon);
+    text-align: center;
+}
+
+.letter p {
+    margin-bottom: 15px;
+    color: var(--ink);
+}
+
+.letter .red {
+    color: var(--pink-deep);
+}
+
+/* =========================================
+   GIFT BOX
+========================================= */
+
+.gift-container {
+    margin: 40px auto;
+}
+
+.gift-box {
+    width: 150px;
+    height: 130px;
+    background: var(--cream);
+    margin: auto;
+    position: relative;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transition: 0.5s ease;
+}
+
+.gift-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--maroon);
+}
+
+.gift-lid {
+    position: absolute;
+    top: -25px;
+    left: -10px;
+    width: 170px;
+    height: 35px;
+    background: var(--pink);
+    border-radius: 7px;
+    transition: 0.7s ease;
+}
+
+.gift-box.opened .gift-lid {
+    transform: translateY(-70px) rotate(-8deg);
+}
+
+/* =========================================
+   GIFT REVEAL
+========================================= */
+
+.gift-reveal {
+    margin-top: 30px;
+    animation: revealAppear 1s ease;
+}
+
+@keyframes revealAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.magic-orb {
+    width: 90px;
+    height: 90px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff, var(--pink-soft), var(--pink));
+    box-shadow:
+        0 0 25px var(--pink-soft),
+        0 0 60px rgba(255, 156, 194, 0.4);
+    animation: orbPulse 2s infinite;
+}
+
+@keyframes orbPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.memory-card {
+    max-width: 600px;
+    margin: 25px auto;
+    background: var(--paper);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.memory-card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 12 / 7;
+    object-fit: cover;
+}
+
+.memory-card-content {
+    padding: 25px;
+}
+
+.memory-card-content h3 {
+    color: var(--maroon);
+    margin-bottom: 10px;
+}
+
+.memory-card-content p {
+    color: var(--ink);
+}
+
+.magic-glow {
+    color: var(--pink-soft);
+    text-shadow: 0 0 12px rgba(255, 156, 194, 0.6);
+}
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake-container {
+    margin: 40px auto;
+}
+
+.cake {
+    width: min(260px, 76vw);
+    height: 130px;
+    background: linear-gradient(var(--pink) 0 20%, var(--cream) 20% 100%);
+    border-radius: 15px 15px 25px 25px;
+    margin: 80px auto 20px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.cake::before {
+    content: "";
+    position: absolute;
+    top: -35px;
+    left: 10px;
+    right: 10px;
+    height: 45px;
+    background: var(--paper);
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+}
+
+.candle {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 70px;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+.flame {
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 32px;
+    background: #ffc94d;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 0 22px #ffb300;
+    animation: flame 0.7s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: translateX(-50%) scale(0.9) rotate(-3deg);
+    }
+
+    to {
+        transform: translateX(-50%) scale(1.1) rotate(3deg);
+    }
+}
+
+.candle.blown .flame {
+    display: none;
+}
+
+.mic-info {
+    font-size: 0.8rem;
+    margin-top: 15px;
+    color: #f3cfd2;
+}
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+.music-btn {
+    position: fixed;
+    top: calc(20px + env(safe-area-inset-top, 0px));
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    color: var(--maroon);
+    cursor: pointer;
+    z-index: 100;
+    transition: 0.3s ease;
+}
+
+.music-btn:hover {
+    background: var(--pink);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   PARTICLES / CONFETTI / FIREWORKS
+========================================= */
+
+.particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: var(--pink-soft);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: 0 0 10px var(--pink-soft);
+    animation: particleFloat 5s linear forwards;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    to {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 14px;
+    top: -20px;
+    z-index: 999;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================
+   FINAL PAGE
+========================================= */
+
+.final-content {
+    position: relative;
+    z-index: 3;
+}
+
+.final-content h1 {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.final-content h1 span {
+    color: var(--pink-soft);
+}
+
+.final-message {
+    max-width: 650px;
+    margin: 20px auto 30px;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .page {
+        padding: 25px 15px;
+        padding-bottom: calc(25px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .letter {
+        padding: 28px 20px;
+    }
+
+    .memory-card-image {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (max-width: 700px) {
+
+    /* photos stay in one line – swipe sideways */
+    .swipe-hint {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .page {
+        padding: 20px 12px;
+        padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .password-card {
+        padding: 28px 18px 22px;
+        border-radius: 20px;
+    }
+
+    .password-card h1 {
+        font-size: 1.7rem;
+    }
+
+    .password-photo {
+        width: 96px;
+        height: 96px;
+    }
+
+    .key {
+        height: 50px;
+    }
+
+    .gift-box {
+        width: 130px;
+        height: 115px;
+    }
+
+    .gift-lid {
+        width: 150px;
+    }
+
+    .memory-card-content {
+        padding: 20px;
+    }
+
+    .main-btn {
+        padding: 12px 22px;
+        font-size: 0.9rem;
+    }
+
+    .music-btn {
+        top: calc(12px + env(safe-area-inset-top, 0px));
+        right: 12px;
+    }
+}
